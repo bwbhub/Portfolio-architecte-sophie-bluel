@@ -113,7 +113,7 @@ li:hover {
 }
 #introduction img {
 	display: block;
-	margin: auto;
+	margin: none;
 	width: 80%;
 }
 
