@@ -1,16 +1,15 @@
-let loginOut = document.getElementById("login-out")
+let loginOut = document.getElementById("login-out");
 
 function changeLogin() {
     if (localStorage.token) {
-        loginOut.innerHTML = `<a href="index.html" onClick="logout()">logout</a>`
+        loginOut.innerHTML = `<a href="index.html">logout</a>`;
+        loginOut.addEventListener("click", () => {
+            localStorage.clear();
+        })
     } else {
-        loginOut.innerHTML = `<a href="login.html">login</a>`
+        loginOut.innerHTML = `<a href="login.html">login</a>`;
     }
 }
 
-function logout(){
-    localStorage.clear()
-    changeLogin()
-}
 
-changeLogin()
+changeLogin();
