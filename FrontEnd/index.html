@@ -9,7 +9,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script type="module" src="../Backend/projet.js"></script>
+	<script type="module" src="./script/gallery.js"></script>
+	<script type="module" src="./script/logout.js"></script>
 </head>
 <body>
 <header>
@@ -18,7 +19,7 @@
 		<ul>
 			<li><a href="index.html#portfolio">projets</a></li>
 			<li><a href="index.html#contact">contact</a></li>
-			<li><a href="login.html">login</a></li>
+			<li id="login-out"><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -43,7 +44,7 @@
 			<button class="btn" id="apptTravaux">Appartements</button>
 			<button class="btn" id="hotresTravaux">Hôtels &amp restaurants</button>
 		</div>
-			<div class="gallery">
+		<div class="gallery">
 		</div>
 	</section>
 	<section id="contact">
@@ -59,6 +60,9 @@
 			<input type="submit" value="Envoyer">
 		</form>
 	</section>
+	<aside class="modal1">
+		<h2>Galerie photo</h2>
+	</aside>
 </main>
 
 <footer>

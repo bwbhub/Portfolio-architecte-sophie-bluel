@@ -37,6 +37,11 @@ main section {
     width: 100%;
 }
 
+.error {
+    color: red;
+    font-weight: bold;
+}
+
 label {
  margin: 2em 0 1em 0;
 }

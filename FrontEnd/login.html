@@ -10,6 +10,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
     <link rel="stylesheet" href="./assets/stylelogin.css">
+	<script type="module" src="./script/Login.js"></script>
 </head>
 <body>
 <header>
@@ -28,11 +29,11 @@
         <h1>Log In</h1>
     </section>
     <section class="section-form">
-        <form action="get" class="login-form">
+        <form class="login-form">
             <label for="umail">E-mail</label>
-            <input type="text"  name="umail" id="umail">
+            <input type="email" name="umail" id="umail" required> <span class="error" id="email-error"></span>
             <label for="upsw">Mot de passe</label>
-            <input type="password" name="upsw" id="upsw">
+            <input type="password" name="upsw" id="upsw" required> <span class="error" id="password-error"></span>
             <input type="submit" value="Se connecter">
         </form>
         <a href="#">Mot de passe oublié</a>

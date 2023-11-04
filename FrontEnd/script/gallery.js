@@ -71,3 +71,4 @@ boutonHotelRestau.addEventListener("click", function() {
     document.querySelector(".gallery").innerHTML = ""
     genererTravaux(hotresTravaux)
 })
+
