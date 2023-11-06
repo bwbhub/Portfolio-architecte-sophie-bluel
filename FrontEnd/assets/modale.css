@@ -19,15 +19,16 @@
 }
 
 .container-modale {
-    width: 45%;
-    height: 55%;
+    max-width: 630px;
+    height: 688px;
     background-color: #FFFFFF;
     border-radius: 10px;
+    box-sizing: border-box;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 50px;
+    padding: 60px 100px;
     gap: 40px;
 } 
 
@@ -43,15 +44,15 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: stretch;
     width: 100%;
-    padding: 30px;
-    gap: 20px;
+    box-sizing: border-box;
+    gap: 30px 11.25px;
 }
 
 .modale-box-js img {
-    height: 102.5px;
-    width: 100%;
+    height: auto;
+    width: 76.86px;
 }
 
 .modale-box-js figure {
@@ -63,17 +64,17 @@
     right: 5px;
     top: 5px;
     color: #FFFFFF;
-    border: 1px solid #000;
-    border-radius: 2px;
+    border-radius: 3px;
     background-color: #000;
-    padding: 2px;
+    padding: 8.5px 4px;
+    box-sizing: border-box;
 }
 
 hr {  
-  border: none;
-  color: #B3B3B3;
-  width: 420px;
-  border: 1px solid #B3B3B3;
+    border: none;
+    color: #B3B3B3;
+    width: 420px;
+    border: 1px solid #B3B3B3;
 }
 
 #ajouter-photo {

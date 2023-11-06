@@ -2,7 +2,9 @@ function authentification(){
     
     // Récupération du formulaire
     const loginForm = document.querySelector(".login-form")
+    const inputEmail = document.getElementById("umail")
     let emailError = document.getElementById("email-error")
+    const inputPsw = document.getElementById("upsw")
     let passwordError = document.getElementById("password-error")
 
     // Eventlistener du SUBMIT
@@ -34,14 +36,22 @@ function authentification(){
                 const errorData = await response.json()
                 passwordError.textContent = "Mot de passe incorrect"
             } else {
-                throw Error(response.statusTeext)
+                throw Error(response.statusText)
             }
         })
         .catch((err) => {
             console.error("Erreur :", err)
         })
+        // Nettoyage messages d'erreur
+        inputEmail.addEventListener("click", (e) => {
+            e.preventDefault()
+            emailError.textContent = ""
+        })
+        inputPsw.addEventListener("click", (e) => {
+            e.preventDefault()
+            passwordError.textContent = ""
+        })
     })
 }
-
 
 authentification()
