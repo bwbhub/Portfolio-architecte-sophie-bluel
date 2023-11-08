@@ -9,10 +9,11 @@ function genererTravaux(travaux){
         const sectionGallery = document.querySelector(".gallery")
         // Balise dédiée à un projet
         const projetElement = document.createElement("figure")
+        projetElement.className = `projet${article.id}`
         // Création des balises
         const imageElement = document.createElement("img")
         imageElement.src = article.imageUrl
-        imageElement.alt = article.title
+        imageElement.alt = `${article.title} | ID: ${article.id}`
         const titleElement = document.createElement("figcaption")
         titleElement.innerText = article.title
         
@@ -71,4 +72,52 @@ boutonHotelRestau.addEventListener("click", function() {
     document.querySelector(".gallery").innerHTML = ""
     genererTravaux(hotresTravaux)
 })
+// Affichage gallery dans Modale
+function genererTravauxModale(travaux){
+    for(let i = 0 ; i < travaux.length ; i++){
+        const article = travaux[i]
+        // Récupération de l'élement DOM qui accueilllera les fiches
+        const sectionModale = document.querySelector(".js-delete-photo")
+        // Balise dédiée à un projet
+        const projetElement = document.createElement("figure")
+        projetElement.className = `modale${article.id}`
+        // Création des balises
+        const imageElement = document.createElement("img")
+        imageElement.src = article.imageUrl
+        imageElement.alt = `${article.title} | ID: ${article.id}`
+        const buttonElement = document.createElement("span")
+        buttonElement.setAttribute("class", "fa-solid fa-trash-can")
+        buttonElement.id = article.id
+        
+        // Attachement des balises
+        sectionModale.appendChild(projetElement)
+        projetElement.appendChild(imageElement)
+        projetElement.appendChild(buttonElement)
+        
+    }
+}
+genererTravauxModale(travaux)
 
+// Suppression work
+const buttonElement = document.querySelectorAll(".fa-trash-can")
+buttonElement.forEach( a => {
+    a.addEventListener("click", (event) => {
+        event.preventDefault()
+        const imageId = event.target.id
+        let monToken = localStorage.getItem("token")
+        fetch(`http://localhost:5678/api/works/${imageId}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Bearer ${monToken}`,},
+        })
+        .then((response) => {
+            if (response.ok) {
+                const sectionGallery = document.querySelector(`.projet${imageId}`)
+                sectionGallery.remove()
+                const sectionModale = document.querySelector(`.modale${imageId}`)
+                sectionModale.remove()
+            } else {
+                console.error("Erreur lors de la suppression de l'élement")
+            }
+        })
+    })
+})

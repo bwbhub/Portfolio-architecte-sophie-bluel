@@ -1,3 +1,4 @@
+/* MODALE 1 */
 
 .modal1 {
     position: fixed;
@@ -19,7 +20,7 @@
 }
 
 .container-modale {
-    max-width: 630px;
+    width: 630px;
     height: 688px;
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -30,16 +31,16 @@
     align-items: center;
     padding: 60px 100px;
     gap: 40px;
-} 
+}
 
-.js-close-modale-link {
+.js-close-modale {
     position: absolute;
     right: 30px;
     top: 30px;
     color: #000;
 }
 
-.modale-box-js {
+.js-delete-photo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -50,23 +51,24 @@
     gap: 30px 11.25px;
 }
 
-.modale-box-js img {
+.js-delete-photo img {
     height: auto;
     width: 76.86px;
 }
 
-.modale-box-js figure {
+.js-delete-photo figure {
     position: relative;
 }
 
-.modale-box-js span {
+.js-delete-photo span {
     position: absolute;
+    font-size: 9px;
     right: 5px;
     top: 5px;
     color: #FFFFFF;
     border-radius: 3px;
     background-color: #000;
-    padding: 8.5px 4px;
+    padding: 4px 4.5px;
     box-sizing: border-box;
 }
 
@@ -77,7 +79,7 @@ hr {
     border: 1px solid #B3B3B3;
 }
 
-#ajouter-photo {
+.btn-modale {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -86,4 +88,75 @@ hr {
 	text-align: center;
 	border-radius: 60px ;
     border: none;
+    width: 237px;
+}
+
+/* MODALE 2 */ 
+
+.ajout-photo {
+    position: absolute;
+    gap: 30px;
+}
+.js-previous-modale-link {
+    position: absolute;
+    color: #000;
+    top: 30px;
+    left: 30px;
+}
+.cadre-ajouter-photo{
+    width: 420px;
+    height: 169px;
+    background-color: #E8F1F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 20px 100px;
+    box-sizing: border-box;
+}
+.cadre-ajouter-photo p{
+    font-size: 10px;
+    color: #444444;
+}
+.cadre-ajouter-photo span {
+    font-size: 76px;
+    color: #C6C6C6;
+}
+.cadre-ajouter-photo input[type="file"] {
+    display: none;
+}
+.plus-add-photo {
+    font-family: 'Work Sans';
+	font-weight: 500;
+    font-size: 14px;
+    color: #4886B7;
+    background-color: #C6C6C6;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 60px;
+    box-sizing: border-box;
+}
+.formulaire-ajout-photo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.formulaire-ajout-photo hr {
+    margin: 40px 0px;
+}
+.formulaire-ajout-photo form {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
+.formulaire-ajout-photo input, select{
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+    background-color: #FFFFFF;
+}
+.formulaire-ajout-photo label {
+	margin: 2em 0 1em 0;
 }
