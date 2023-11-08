@@ -109,10 +109,21 @@ hr {
     background-color: #E8F1F6;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+.inner-cadre-ajouter-photo{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px;
-    padding: 20px 100px;
     box-sizing: border-box;
+    padding: 20px 0px;
+}
+.cadre-ajouter-photo img{
+    height: 169px;
+    display: none;
 }
 .cadre-ajouter-photo p{
     font-size: 10px;
@@ -122,9 +133,7 @@ hr {
     font-size: 76px;
     color: #C6C6C6;
 }
-.cadre-ajouter-photo input[type="file"] {
-    display: none;
-}
+
 .plus-add-photo {
     font-family: 'Work Sans';
 	font-weight: 500;
@@ -135,6 +144,9 @@ hr {
     border: none;
     border-radius: 60px;
     box-sizing: border-box;
+}
+.cadre-ajouter-photo input[type=file] {
+    display: none;
 }
 .formulaire-ajout-photo {
     display: flex;

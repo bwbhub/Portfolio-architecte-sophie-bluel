@@ -88,10 +88,13 @@
 		</a>
 		<h2>Ajout photo</h2>
 		<div class="cadre-ajouter-photo">
-			<span class="fa-regular fa-image"></span>
-			<input type="file" accept=".jpg, .jpeg, .png" >
-			<label for="file" class="plus-add-photo">+ Ajouter photo</label>
-			<p>jpg, png : 4mo max</p>
+			<img src="img.png" alt="uploaded img" id="uploaded-img">
+			<div class="inner-cadre-ajouter-photo">
+				<span class="fa-regular fa-image" id="uploaded-span"></span>
+				<label for="file-input" class="plus-add-photo">+ Ajouter Photo</label>
+				<input type="file" name="file-input" id="file-input" class="file-input">
+				<p id="uploaded-p">jpg, png : 4mo max</p>
+			</div>
 		</div>
 		<form action="post" class="formulaire-ajout-photo">
 			<label for="title-photo">Titre</label>

@@ -79,3 +79,16 @@ function genererOptionCate(categoriePhoto){
 
 genererOptionCate(categoriePhoto)
 showModaleLink()
+
+// Chargement Photo dans le cadre & clear à la fermeture
+function chargementPhoto () {
+    const input = document.getElementById("file-input")
+    const image = document.getElementById("uploaded-img")
+    input.addEventListener("change", () =>{
+        image.src = URL.createObjectURL(input.files[0])
+        document.querySelector(".inner-cadre-ajouter-photo").setAttribute("style", "display: none;")
+        image.setAttribute("style", "display: flex;")
+    })
+}
+
+chargementPhoto()
