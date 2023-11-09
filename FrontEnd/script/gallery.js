@@ -121,3 +121,29 @@ buttonElement.forEach( a => {
         })
     })
 })
+
+// Fonction Ajout Photo
+function ajouterPhoto() {
+    const formNewWork = document.querySelector(".formulaire-ajout-photo")
+    let monToken = localStorage.getItem("token")
+    formNewWork.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const newProjet = new FormData()
+        newProjet.append("image", e.target.querySelector("[name=file-input]").files[0])
+        newProjet.append("title", e.target.querySelector("[name=title-photo]").value)
+        newProjet.append("category", e.target.querySelector("[name=categorie-photo]").value)
+        console.log(newProjet)
+        fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${monToken}`,
+                Accept: "application/json",
+                Content: "multipart/form-data"
+            },
+            body: newProjet
+        })
+        // ajout du .then
+    })
+}
+
+ajouterPhoto()

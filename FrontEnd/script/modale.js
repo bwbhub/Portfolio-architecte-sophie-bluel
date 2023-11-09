@@ -31,6 +31,7 @@ const closeModale = function (e) {
     modal.querySelector(".delete-photo").removeEventListener("click", stopPropagation)
     modal.querySelector(".ajout-photo").removeEventListener("click", stopPropagation)
     modal.querySelectorAll(".js-close-modale").forEach(a => { a.removeEventListener("click", fermerToutesModales)})
+    fermetureCadrePhoto()
     modal = null
 }
 // Stop de la propagation de la fermeture au click sur le parent
@@ -43,7 +44,7 @@ window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.key === "Esc") {
         closeModale(e)
     }
-})
+}) 
 // Ouverture et fermeture modale 2
 const modalePhotoLink = document.getElementById("js-add-photo")
 const fenetreAjoutPhoto = document.querySelector(".ajout-photo")
@@ -71,7 +72,8 @@ function genererOptionCate(categoriePhoto){
         const selectForm = document.getElementById("categorie-photo")
         // Balise dédiée à un projet
         const optionform = document.createElement("option")
-        optionform.innerHTML = `<option value="${article.id}">${article.name}</option>`
+        optionform.innerText = `${article.name}`
+        optionform.setAttribute("Value", `${article.id}`)
         // Attachement des balises
         selectForm.appendChild(optionform)
     }
@@ -91,4 +93,16 @@ function chargementPhoto () {
     })
 }
 
+function fermetureCadrePhoto () {
+    const input = document.getElementById("file-input")
+    const image = document.getElementById("uploaded-img")
+    const titre = document.getElementById("title-photo")
+    image.src = ""
+    input.value = ""
+    titre.value = ""
+    document.querySelector(".inner-cadre-ajouter-photo").removeAttribute("style")
+    image.setAttribute("style", "display: none;")
+}
+
 chargementPhoto()
+fermetureCadrePhoto()
