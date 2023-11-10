@@ -1,3 +1,4 @@
+import { fermetureCadrePhoto } from "./modale.js"
 const reponse = await fetch("http://localhost:5678/api/works")
 const travaux = await reponse.json()
 
@@ -13,7 +14,7 @@ function genererTravaux(travaux){
         // Création des balises
         const imageElement = document.createElement("img")
         imageElement.src = article.imageUrl
-        imageElement.alt = `${article.title} | ID: ${article.id}`
+        imageElement.alt = `${article.title}`
         const titleElement = document.createElement("figcaption")
         titleElement.innerText = article.title
         
@@ -84,7 +85,7 @@ function genererTravauxModale(travaux){
         // Création des balises
         const imageElement = document.createElement("img")
         imageElement.src = article.imageUrl
-        imageElement.alt = `${article.title} | ID: ${article.id}`
+        imageElement.alt = `${article.title}`
         const buttonElement = document.createElement("span")
         buttonElement.setAttribute("class", "fa-solid fa-trash-can")
         buttonElement.id = article.id
@@ -99,9 +100,8 @@ function genererTravauxModale(travaux){
 genererTravauxModale(travaux)
 
 // Suppression work
-const buttonElement = document.querySelectorAll(".fa-trash-can")
-buttonElement.forEach( a => {
-    a.addEventListener("click", (event) => {
+function suppressionProjets(e){
+    e.addEventListener("click", (event) => {
         event.preventDefault()
         const imageId = event.target.id
         let monToken = localStorage.getItem("token")
@@ -111,16 +111,47 @@ buttonElement.forEach( a => {
         })
         .then((response) => {
             if (response.ok) {
-                const sectionGallery = document.querySelector(`.projet${imageId}`)
-                sectionGallery.remove()
-                const sectionModale = document.querySelector(`.modale${imageId}`)
-                sectionModale.remove()
+                const elementGallery = document.querySelector(`.projet${imageId}`)
+                elementGallery.remove()
+                const elementModale = document.querySelector(`.modale${imageId}`)
+                elementModale.remove()
             } else {
                 console.error("Erreur lors de la suppression de l'élement")
             }
         })
     })
-})
+}
+const buttonElement = document.querySelectorAll(".fa-trash-can")
+buttonElement.forEach(suppressionProjets)
+
+// Fonction ajout dynamique des photos ajoutées
+function modaleDynamique (data) {
+    const sectionModale = document.querySelector(".js-delete-photo")
+    const projetElement = document.createElement("figure")
+    projetElement.className = `modale${data.id}`
+    const imageElement = document.createElement("img")
+    imageElement.src = data.imageUrl
+    imageElement.alt = data.title
+    const buttonElement = document.createElement("span")
+    buttonElement.setAttribute("class", "fa-solid fa-trash-can")
+    buttonElement.id = data.id
+    sectionModale.appendChild(projetElement)
+    projetElement.appendChild(buttonElement)
+    projetElement.appendChild(imageElement)
+}
+function galleryDynamique (data) {
+    const sectionGallery = document.querySelector(".gallery")
+    const projetElement = document.createElement("figure")
+    projetElement.className = `projet${data.id}`
+    const imageElement = document.createElement("img")
+    imageElement.src = data.imageUrl
+    imageElement.alt = data.title
+    const titleElement = document.createElement("figcaption")
+    titleElement.innerText = data.title
+    sectionGallery.appendChild(projetElement)
+    projetElement.appendChild(imageElement)
+    projetElement.appendChild(titleElement)
+}
 
 // Fonction Ajout Photo
 function ajouterPhoto() {
@@ -132,7 +163,6 @@ function ajouterPhoto() {
         newProjet.append("image", e.target.querySelector("[name=file-input]").files[0])
         newProjet.append("title", e.target.querySelector("[name=title-photo]").value)
         newProjet.append("category", e.target.querySelector("[name=categorie-photo]").value)
-        console.log(newProjet)
         fetch("http://localhost:5678/api/works", {
             method: "POST",
             headers: {
@@ -142,8 +172,24 @@ function ajouterPhoto() {
             },
             body: newProjet
         })
-        // ajout du .then
+        .then((response) => {
+            if(response.ok) {
+                return response.json()
+            }
+        })
+        .then((data) => {
+            alert("Photo ajoutée avec succès !")
+            fermetureCadrePhoto()
+            modaleDynamique(data)
+            galleryDynamique(data)
+            const newButtonElement = document.querySelectorAll(".fa-trash-can")
+            newButtonElement.forEach(suppressionProjets)
+        })
+        .catch((error) => {
+            console.error("Erreur : ", error);
+        })
     })
 }
+
 
 ajouterPhoto()

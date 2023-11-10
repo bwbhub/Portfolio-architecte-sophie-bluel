@@ -130,7 +130,7 @@ hr {
 }
 .cadre-ajouter-photo span {
     font-size: 76px;
-    color: #C6C6C6;
+    color: #CBD6DC;
 }
 
 .plus-add-photo {
@@ -138,7 +138,7 @@ hr {
 	font-weight: 500;
     font-size: 14px;
     color: #4886B7;
-    background-color: #C6C6C6;
+    background-color: #CBD6DC;
     padding: 10px 20px;
     border: none;
     border-radius: 60px;
@@ -173,4 +173,16 @@ hr {
 }
 .inner-cadre-ajouter-photo label {
     margin: 0;
+}
+
+.btn-modale-disabled {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #A7A7A7;
+    padding: 10px 35px;
+	text-align: center;
+	border-radius: 60px ;
+    border: none;
+    width: 237px;
 }

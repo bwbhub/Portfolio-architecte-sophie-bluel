@@ -4,12 +4,12 @@ function showModaleLink() {
     if (localStorage.token) {
         modaleLink.removeAttribute("style")
     }
-    modaleLink.addEventListener("click", openModale1)
+    modaleLink.addEventListener("click", openModale)
 }
 // Variable choix fenetre modale
 let modal = null
 // Fonction ouverture modale 1
-const openModale1 = function (e) {
+const openModale = function (e) {
     e.preventDefault()
     modal = document.querySelector(".modal1")
     modal.setAttribute("style", "display: null;")
@@ -55,6 +55,7 @@ modalePhotoLink.addEventListener("click", (e) => {
 const btnPreviousModale = document.querySelector(".js-previous-modale")
 btnPreviousModale.addEventListener("click", (e) => {
     fenetreAjoutPhoto.setAttribute("style", "display: none;")
+    fermetureCadrePhoto()
 })
 const fermerToutesModales = function (e) {
     e.preventDefault()
@@ -93,7 +94,7 @@ function chargementPhoto () {
     })
 }
 
-function fermetureCadrePhoto () {
+export function fermetureCadrePhoto () {
     const input = document.getElementById("file-input")
     const image = document.getElementById("uploaded-img")
     const titre = document.getElementById("title-photo")
@@ -103,6 +104,17 @@ function fermetureCadrePhoto () {
     document.querySelector(".inner-cadre-ajouter-photo").removeAttribute("style")
     image.setAttribute("style", "display: none;")
 }
+
+// Bouton submit Ajout Photo
+const formNewWork = document.getElementById("form-new-work")
+formNewWork.addEventListener("change", () => {
+    const btn = document.getElementById("js-valider-photo")
+    if (formNewWork.checkValidity()) {
+        btn.removeAttribute("disabled")
+        btn.setAttribute("class", "btn-modale")
+    }
+})
+
 
 chargementPhoto()
 fermetureCadrePhoto()
