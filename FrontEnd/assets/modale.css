@@ -49,11 +49,14 @@
     width: 100%;
     box-sizing: border-box;
     gap: 30px 11.25px;
+    overflow-y: scroll;
+	scrollbar-width: none;
 }
 
 .js-delete-photo img {
     height: auto;
     width: 76.86px;
+    max-height: 102.4px;
 }
 
 .js-delete-photo figure {

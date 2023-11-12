@@ -57,6 +57,14 @@ input {
 input[type="submit"] {
     font-size: 14px;
     height: 36px;
+    font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
 }
 
 footer {

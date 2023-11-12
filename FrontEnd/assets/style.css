@@ -113,7 +113,6 @@ li:hover {
 }
 #introduction img {
 	display: block;
-	margin: auto;
 	width: 80%;
 }
 
@@ -159,7 +158,6 @@ li:hover {
 	border-radius: 60px;
 	padding: 5px 10px;
 }
-
 .special {
 	background-color: #1D6154;
 	color: #fffef8;
@@ -171,11 +169,12 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
-
+	object-fit: cover;
+	max-height: 490px;
 }
+
 #contact {
 	width: 50%;
 	margin: auto;
@@ -225,3 +224,6 @@ footer nav ul {
 	background-color: #FFFFFF;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}

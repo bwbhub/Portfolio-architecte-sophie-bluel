@@ -1,4 +1,4 @@
-// Changement de display du lien modale
+// Changement de display du lien modale + ouverture 
 function showModaleLink() {
     const modaleLink = document.querySelector(".lien-modale")
     if (localStorage.token) {
@@ -6,12 +6,13 @@ function showModaleLink() {
     }
     modaleLink.addEventListener("click", openModale)
 }
-// Variable choix fenetre modale
-let modal = null
+
 // Fonction ouverture modale 1
+let modal = null
 const openModale = function (e) {
     e.preventDefault()
     modal = document.querySelector(".modal1")
+    const body = document.querySelector("body").setAttribute("style", "overflow: hidden;")
     modal.setAttribute("style", "display: null;")
     modal.setAttribute("aria-hidden", "false")
     modal.setAttribute("aria-modale", "true")
@@ -19,11 +20,14 @@ const openModale = function (e) {
     modal.querySelector(".delete-photo").addEventListener("click", stopPropagation)
     modal.querySelector(".ajout-photo").addEventListener("click", stopPropagation)
     modal.querySelectorAll(".js-close-modale").forEach(a => { a.addEventListener("click", fermerToutesModales)})
+    
 }
+
 // Fonction fermeture modale
 const closeModale = function (e) {
     if (modal === null) return
     e.preventDefault()
+    const body = document.querySelector("body").removeAttribute("style")
     modal.setAttribute("style", "display: none;")
     modal.setAttribute("aria-hidden", "true")
     modal.setAttribute("aria-modale", "false")
@@ -34,17 +38,19 @@ const closeModale = function (e) {
     fermetureCadrePhoto()
     modal = null
 }
+
 // Stop de la propagation de la fermeture au click sur le parent
 const stopPropagation = function (e) {
     e.stopPropagation()
 }
-// Event listener lien modale
+
 // Réponse à la touche Esc
 window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" || e.key === "Esc") {
         closeModale(e)
     }
 }) 
+
 // Ouverture et fermeture modale 2
 const modalePhotoLink = document.getElementById("js-add-photo")
 const fenetreAjoutPhoto = document.querySelector(".ajout-photo")
@@ -93,7 +99,6 @@ function chargementPhoto () {
         image.setAttribute("style", "display: flex;")
     })
 }
-
 export function fermetureCadrePhoto () {
     const input = document.getElementById("file-input")
     const image = document.getElementById("uploaded-img")
@@ -105,7 +110,7 @@ export function fermetureCadrePhoto () {
     image.setAttribute("style", "display: none;")
 }
 
-// Bouton submit Ajout Photo
+// Display bouton submit Ajout Photo
 const formNewWork = document.getElementById("form-new-work")
 formNewWork.addEventListener("change", () => {
     const btn = document.getElementById("js-valider-photo")
